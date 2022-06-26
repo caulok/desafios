@@ -5,8 +5,9 @@ while(usuario == 0){
 }
 
 class Paquete {
-    constructor(nombre, mes, anio, aerolinea, comida, precioVenta){
+    constructor(nombre, dia, mes, anio, aerolinea, comida, precioVenta){
         this.nombre = nombre.toUpperCase()
+        this.dia = dia
         this.mes = mes
         this.anio = anio
         this.aerolinea = aerolinea
@@ -26,6 +27,12 @@ function agregarPaquetes(){
 
     for(i=1; i<=personas; i++){
         let nombre = prompt(`¿Cual es el nombre de la persona ${i}?`)
+
+        let dia = parseInt(prompt(`Ingrese el día de vuelo`))
+        while(dia == 0 || dia >= 32){
+            alert(`No has ingresado un día válido`)
+            dia = prompt(`Por favor informanos un día válido`)
+        }
 
         let mes = parseInt(prompt(`Ingrese el mes de vuelo`))
         while(mes == 0 || mes >= 13){
@@ -70,17 +77,15 @@ function agregarPaquetes(){
                 break
         }
 
-        let nuevoPaquete = new Paquete(nombre, mes, anio, aerolinea, comida, precioVenta)
+        let nuevoPaquete = new Paquete(nombre, dia, mes, anio, aerolinea, comida, precioVenta)
         paquete.push(nuevoPaquete)
     }
     console.log(paquete)
     
     // Esta parte de abajo sinceramente la busqué en internet ya que desconocía cómo sumar elementos de un array en un ciclo FOR.
-
     const total = paquete.map(item => item.precioVenta).reduce((prev, curr) => prev + curr, 0);
 
     alert(`El valor total del paquete para ${personas} personas a Madrid es de US$${total}`);
-
     alert(`¡Gracias por tu compra ${usuario}! Nos vemos pronto`)
 }
 
