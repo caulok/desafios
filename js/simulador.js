@@ -65,24 +65,16 @@ paqueteElegido = paquetes.find(paquete => paquete.id == elegirPaquete);
     /* Elección de personas */
 let cantidad = parseInt(prompt(`¿Cuántas personas viajarán?`));
 
-function cantidadPersonas(){
-    for(i=1;i<=cantidad;i++){
-        let names = prompt(`Ingresa el nombre de la persona ${i}`);
-        while(names === "" || validarIsNotString(names) || usuario.length < 2){
-            alert(`No has ingresado un nombre o es demasiado corto`);
-            names = prompt(`Por favor informanos el nombre de la persona ${i}`);
-        }
-        let passports = parseInt(prompt(`Ingresa tu pasaporte`));
-                while(passports === "" || passports.toString().length < 6){
-                    alert(`No has ingresado tu pasaporte o colocaste un número menor a 6 dígitos`);
-                    passports = prompt(`Por favor informanos tu pasaporte`);
-        }
+let names = prompt(`Ingresa el nombre de la persona`);
+    while(names === "" || validarIsNotString(names) || usuario.length < 2){
+        alert(`No has ingresado un nombre o es demasiado corto`);
+        names = prompt(`Por favor informanos el nombre de la persona`);
     }
-    return{names,passports};
-}
-
-let names = cantidadPersonas.names;
-let passports = cantidadPersonas.passports;
+let passports = parseInt(prompt(`Ingresa tu pasaporte`));
+    while(passports === "" || passports.toString().length < 6){
+        alert(`No has ingresado tu pasaporte o colocaste un número menor a 6 dígitos`);
+        passports = prompt(`Por favor informanos tu pasaporte`);
+    }
 
 let people = new Persona(names, passports);
 personas.push(people);
@@ -92,8 +84,11 @@ let reserva = new Reserva(Date(), paqueteElegido, people);
 reservas.push(reserva);
 
 
+/* DOM */
+let mostrarNombre = document.getElementById("nombre");
+mostrarNombre.innerText = usuario;
+
 /*3ro la ejecución de funciones*/
-cantidadPersonas();
 console.log(reserva);
 alert(`En la consola están los resultados de tu reserva. Sugerimos que te fijes allí ${usuario}.\n\nTIP: Podés desplegar la reserva para ver el paquete y tus datos.`)
 
