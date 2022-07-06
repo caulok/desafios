@@ -5,7 +5,8 @@
 /* CLASES */
 
 class Reserva {
-    constructor(generacion, paquete, persona){
+    constructor(id, generacion, paquete, persona){
+        this.id = id;
         this.generacion_de_ticket = generacion;
         this.paquete = paquete;
         this.persona = persona;
@@ -22,24 +23,34 @@ class Paquete {
     }
 }
 class Persona {
-    constructor(name, pasaporte) {
+    constructor(id, name, nacionalidad, pasaporte) {
+        this.id = id;
         this.nombre = name;
+        this.nacionalidad = nacionalidad;
         this.pasaporte = pasaporte;
     }
 }
 
-/*2do las variables globales*/
-let personas = [];
-let paquetes = [];
-let reservas = [];
-
-let paqueteMadrid = new Paquete(1, "Madrid", new Date("2024-11-24"), 7, "Hilton Hotel", 13000);
-let paqueteToledo = new Paquete(2, "Toledo", new Date("2024-3-14"), 10, "Nuestro Camino Hotel", 6000);
-let paqueteAranjuez = new Paquete(3, "Aranjuez", new Date("2024-05-12"), 10, "BlueStar Aparts", 7000);
-
-paquetes.push(paqueteMadrid);
-paquetes.push(paqueteToledo);
-paquetes.push(paqueteAranjuez);
+/* FUNCIONES */
+function agregarPersona(i) {
+    let mainName = prompt(`Ingrese el nombre de la persona Nro ${i}`);
+    while(mainName === "" || validarIsNotString(mainName) || usuario.length < 2){
+        alert(`No has ingresado un nombre o es demasiado corto`);
+        mainName = prompt(`Por favor informanos el nombre de la persona Nro ${i}`);
+    }
+    let passport = parseInt(prompt(`Ingrese el pasaporte de la persona Nro ${i}`));
+    while(passport === "" || passport.toString().length < 6){
+        alert(`No has ingresado un pasaporte o colocaste un número menor a 6 dígitos`);
+        passport = prompt(`Por favor informanos el pasaporte de la persona Nro ${i}`);
+    }
+    let nacionalidad = prompt(`Ingrese la nacionalidad de la persona Nro ${i}`)
+    while(nacionalidad === "" || validarIsNotString(nacionalidad) || usuario.length < 5){
+        alert(`No has ingresado una nacionalidad`);
+        nacionalidad = prompt(`Por favor informanos la nacionalidad de la persona Nro ${i}`);
+    }
+    let persona = new Persona(contadorPersonas, mainName, nacionalidad, passport);
+    return persona;
+}
 
 /*Validar si es un string*/
 const validarIsNotString = (dato) => {
@@ -49,6 +60,22 @@ const validarIsNotString = (dato) => {
     }
     return true;
 }
+
+/* VARIABLES GLOBALES */
+let personas = [];
+let paquetes = [];
+let reservas = [];
+let contadorDeReservas = 1;
+let contadorPersonas = 1;
+
+let paqueteMadrid = new Paquete(1, "Madrid", new Date("2024-11-24"), 7, "Hilton Hotel", 13000);
+let paqueteToledo = new Paquete(2, "Toledo", new Date("2024-3-14"), 10, "Nuestro Camino Hotel", 6000);
+let paqueteAranjuez = new Paquete(3, "Aranjuez", new Date("2024-05-12"), 10, "BlueStar Aparts", 7000);
+
+paquetes.push(paqueteMadrid);
+paquetes.push(paqueteToledo);
+paquetes.push(paqueteAranjuez);
+
 
 /* INGRESO DE LOS DATOS */
     
@@ -60,29 +87,19 @@ while(usuario === "" || validarIsNotString(usuario) || usuario.length < 2){
 }
     /* Elección de paquete */
 let elegirPaquete = parseInt(prompt(`Elegí por favor un paquete:\n\n1.Madrid\n2.Toledo\n3.Aranjuez`));
-paqueteElegido = paquetes.find(paquete => paquete.id == elegirPaquete);
+let paqueteElegido = paquetes.find(paquete => paquete.id == elegirPaquete);
 
     /* Elección de personas */
 let cantidad = parseInt(prompt(`¿Cuántas personas viajarán?`));
-
-let names = prompt(`Ingresa el nombre de la persona`);
-    while(names === "" || validarIsNotString(names) || usuario.length < 2){
-        alert(`No has ingresado un nombre o es demasiado corto`);
-        names = prompt(`Por favor informanos el nombre de la persona`);
-    }
-let passports = parseInt(prompt(`Ingresa tu pasaporte`));
-    while(passports === "" || passports.toString().length < 6){
-        alert(`No has ingresado tu pasaporte o colocaste un número menor a 6 dígitos`);
-        passports = prompt(`Por favor informanos tu pasaporte`);
-    }
-
-let people = new Persona(names, passports);
-personas.push(people);
+for(let i = 1; i <= cantidad; i++) {
+    personas.push(agregarPersona(i));
+    contadorPersonas++;
+}
 
     /* RESERVA */
-let reserva = new Reserva(Date(), paqueteElegido, people);
+let reserva = new Reserva(contadorDeReservas, Date(), paqueteElegido, personas);
+contadorDeReservas++;
 reservas.push(reserva);
-
 
 /* DOM */
 let mostrarNombre = document.getElementById("nombre");
