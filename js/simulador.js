@@ -87,10 +87,18 @@ while(usuario === "" || validarIsNotString(usuario) || usuario.length < 2){
 }
     /* Elección de paquete */
 let elegirPaquete = parseInt(prompt(`Elegí por favor un paquete:\n\n1.Madrid\n2.Toledo\n3.Aranjuez`));
+while(elegirPaquete === "" || isNaN(elegirPaquete)){
+    alert(`No has ingresado un número`);
+    elegirPaquete = prompt(`Por favor selecciona un número de paquete:\n\n1.Madrid\n2.Toledo\n3.Aranjuez`);
+}
 let paqueteElegido = paquetes.find(paquete => paquete.id == elegirPaquete);
 
     /* Elección de personas */
 let cantidad = parseInt(prompt(`¿Cuántas personas viajarán?`));
+while(cantidad === "" || isNaN(cantidad)){
+    alert(`No has ingresado una cantidad`);
+    cantidad = prompt(`Por favor selecciona una cantidad`);
+}
 for(let i = 1; i <= cantidad; i++) {
     personas.push(agregarPersona(i));
     contadorPersonas++;
