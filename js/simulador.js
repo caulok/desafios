@@ -43,7 +43,7 @@ function agregarPersona(i) {
         alert(`No has ingresado un pasaporte o colocaste un número menor a 6 dígitos`);
         passport = prompt(`Por favor informanos el pasaporte de la persona Nro ${i}`);
     }
-    let nacionalidad = prompt(`Ingrese la nacionalidad de la persona Nro ${i}`)
+    let nacionalidad = prompt(`Ingrese la nacionalidad de la persona Nro ${i} (ARG, BRA, CHI)`)
     while(nacionalidad === "" || validarIsNotString(nacionalidad)){
         alert(`No has ingresado una nacionalidad`);
         nacionalidad = prompt(`Por favor informanos la nacionalidad de la persona Nro ${i}`);
@@ -126,7 +126,29 @@ mostrarHospedaje.innerText = paqueteElegido['hospedaje'];
 let mostrarTotal = document.querySelector("#total");
 mostrarTotal.innerText = `USD $${total}`;
 let mostrarGeneracion = document.querySelector("#generacion");
-mostrarGeneracion.innerText = Date();
+mostrarGeneracion.innerText = `Generación del ticket de reserva: ${Date()}`;
+
+let contenedor = document.getElementById("contenedor");
+
+for (const viajantes of personas) {
+    let crearColumna = document.createElement("div");
+    crearColumna.className = "col-md-3 col-xs-12"
+    crearColumna.id = `columna-${viajantes.id}`
+    crearColumna.innerHTML = `
+        <div>
+            <h4>Datos de viajante ${viajantes.id}:</h4>
+            <br>
+            <h5>Viajero ${viajantes.id}:</h5>
+            <ul>
+                <li>Nombre: <strong>${viajantes.nombre.toUpperCase()}</strong></li>
+                <li>Pasaporte: <strong>${viajantes.pasaporte}</strong></li>
+                <li>Nacionalidad: <strong>${viajantes.nacionalidad.toUpperCase()}</strong></li>
+            </ul>
+        </div>
+    `
+    contenedor.append(crearColumna);
+}
+
 /*3ro la ejecución de funciones*/
 console.log(reserva);
 alert(`¡Gracias por reservar con nosotros!`)
