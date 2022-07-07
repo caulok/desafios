@@ -44,7 +44,7 @@ function agregarPersona(i) {
         passport = prompt(`Por favor informanos el pasaporte de la persona Nro ${i}`);
     }
     let nacionalidad = prompt(`Ingrese la nacionalidad de la persona Nro ${i}`)
-    while(nacionalidad === "" || validarIsNotString(nacionalidad) || usuario.length < 5){
+    while(nacionalidad === "" || validarIsNotString(nacionalidad)){
         alert(`No has ingresado una nacionalidad`);
         nacionalidad = prompt(`Por favor informanos la nacionalidad de la persona Nro ${i}`);
     }
@@ -111,9 +111,15 @@ reservas.push(reserva);
 
 /* DOM */
 let mostrarNombre = document.getElementById("nombre");
-mostrarNombre.innerText = usuario;
+mostrarNombre.innerText = usuario.toUpperCase();
+let mostrarPaquete = document.getElementById("paquete");
+mostrarPaquete.innerText = paqueteElegido['ubicacion'];
+let mostrarCantidad = document.getElementById("cantidad");
+mostrarCantidad.innerText = cantidad;
+let mostrarFecha = document.getElementById("fecha");
+mostrarFecha.innerText = `${paqueteElegido['fecha_contratada'].getDate()}/${paqueteElegido['fecha_contratada'].getMonth()+1}/${paqueteElegido['fecha_contratada'].getFullYear()}`;
 
 /*3ro la ejecución de funciones*/
 console.log(reserva);
-alert(`En la consola están los resultados de tu reserva. Sugerimos que te fijes allí ${usuario}.\n\nTIP: Podés desplegar la reserva para ver el paquete y tus datos.`)
+alert(`¡Gracias por reservar con nosotros!`)
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <title>Desafíos</title>
 </head>
@@ -14,11 +15,35 @@
 
     <div class="container">
         <h2>Reserva de paquetes de viaje</h2>
-        <h3>Tu nombre: <strong id="nombre"></strong></h3>
-        
-        <h3>Paquete elegido: <strong id="paquete"></strong></h3>
-        
+        <br>
+        <h3>Resumen:</h3>
+        <!-- <div class="mb-3">
+            <label for="name" class="form-label"></label>
+            <input type="name" class="form-control" id="nombre" placeholder="Nombre completo">
+        </div>
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Selecciona un paquete</option>
+            <option value="1">Madrid</option>
+            <option value="2">Toledo</option>
+            <option value="3">Aranjuez</option>
+          </select>
+        <div class="mb-3">
+            <label for="cantidad" class="form-label"></label>
+            <input type="number" class="form-control" id="cantidad" placeholder="Cantidad de personas">
+        </div> -->
+        <ul>
+            <li>Nombre: <strong id="nombre"></strong></li>
+            <li>Paquete: <strong id="paquete"></strong></li>
+            <li>Cantidad: <strong id="cantidad"></strong></li>
+            <li>Fecha: <strong id="fecha"></strong></li>
+        </ul>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
+    </script>
     <script src="js/simulador.js"></script>
 </body>
 </html>

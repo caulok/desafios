@@ -12,4 +12,7 @@
 .container h2{
     font-size: 2em;
 }
+.container strong{
+    font-size: 1em;
+}
 
