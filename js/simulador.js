@@ -109,16 +109,24 @@ let reserva = new Reserva(contadorDeReservas, Date(), paqueteElegido, personas);
 contadorDeReservas++;
 reservas.push(reserva);
 
-/* DOM */
-let mostrarNombre = document.getElementById("nombre");
-mostrarNombre.innerText = usuario.toUpperCase();
-let mostrarPaquete = document.getElementById("paquete");
-mostrarPaquete.innerText = paqueteElegido['ubicacion'];
-let mostrarCantidad = document.getElementById("cantidad");
-mostrarCantidad.innerText = cantidad;
-let mostrarFecha = document.getElementById("fecha");
-mostrarFecha.innerText = `${paqueteElegido['fecha_contratada'].getDate()}/${paqueteElegido['fecha_contratada'].getMonth()+1}/${paqueteElegido['fecha_contratada'].getFullYear()}`;
+    /* TOTAL */
+let total = paqueteElegido['precio']*cantidad
 
+/* DOM */
+let mostrarNombre = document.querySelector("#nombre");
+mostrarNombre.innerText = usuario.toUpperCase();
+let mostrarPaquete = document.querySelector("#paquete");
+mostrarPaquete.innerText = paqueteElegido['ubicacion'];
+let mostrarCantidad = document.querySelector("#cantidad");
+mostrarCantidad.innerText = cantidad;
+let mostrarFecha = document.querySelector("#fecha");
+mostrarFecha.innerText = `${paqueteElegido['fecha_contratada'].getDate()}/${paqueteElegido['fecha_contratada'].getMonth()+1}/${paqueteElegido['fecha_contratada'].getFullYear()}`;
+let mostrarHospedaje = document.querySelector("#hotel");
+mostrarHospedaje.innerText = paqueteElegido['hospedaje'];
+let mostrarTotal = document.querySelector("#total");
+mostrarTotal.innerText = `USD $${total}`;
+let mostrarGeneracion = document.querySelector("#generacion");
+mostrarGeneracion.innerText = Date();
 /*3ro la ejecución de funciones*/
 console.log(reserva);
 alert(`¡Gracias por reservar con nosotros!`)
