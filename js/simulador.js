@@ -23,9 +23,10 @@ class Paquete {
     }
 }
 class Persona {
-    constructor(id, name, nacionalidad, pasaporte) {
+    constructor(id, name, apellido, nacionalidad, pasaporte) {
         this.id = id;
         this.nombre = name;
+        this.apellido = apellido;
         this.nacionalidad = nacionalidad;
         this.pasaporte = pasaporte;
     }
@@ -34,9 +35,14 @@ class Persona {
 /* FUNCIONES */
 function agregarPersona(i) {
     let mainName = prompt(`Ingrese el nombre de la persona Nro ${i}`);
-    while(mainName === "" || validarIsNotString(mainName) || usuario.length < 2){
+    while(mainName === "" || validarIsNotString(mainName) || mainName.length < 2){
         alert(`No has ingresado un nombre o es demasiado corto`);
         mainName = prompt(`Por favor informanos el nombre de la persona Nro ${i}`);
+    }
+    let lastName = prompt(`Ingrese el apellido de la persona Nro ${i}`);
+    while(lastName === "" || validarIsNotString(lastName) || lastName.length < 2){
+        alert(`No has ingresado un apellido o es demasiado corto`);
+        lastName = prompt(`Por favor informanos el apellido de la persona Nro ${i}`);
     }
     let passport = parseInt(prompt(`Ingrese el pasaporte de la persona Nro ${i}`));
     while(passport === "" || passport.toString().length < 6){
@@ -48,7 +54,7 @@ function agregarPersona(i) {
         alert(`No has ingresado una nacionalidad`);
         nacionalidad = prompt(`Por favor informanos la nacionalidad de la persona Nro ${i}`);
     }
-    let persona = new Persona(contadorPersonas, mainName, nacionalidad, passport);
+    let persona = new Persona(contadorPersonas, mainName, lastName, nacionalidad, passport);
     return persona;
 }
 
@@ -140,7 +146,7 @@ for (const viajantes of personas) {
             <br>
             <h5>Viajero ${viajantes.id}:</h5>
             <ul>
-                <li>Nombre: <strong>${viajantes.nombre.toUpperCase()}</strong></li>
+                <li>Nombre: <strong>${viajantes.nombre.toUpperCase()} ${viajantes.apellido.toUpperCase()}</strong></li>
                 <li>Pasaporte: <strong>${viajantes.pasaporte}</strong></li>
                 <li>Nacionalidad: <strong>${viajantes.nacionalidad.toUpperCase()}</strong></li>
             </ul>
