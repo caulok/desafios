@@ -132,7 +132,7 @@ let contenedor = document.getElementById("contenedor");
 
 for (const viajantes of personas) {
     let crearColumna = document.createElement("div");
-    crearColumna.className = "col-md-3 col-xs-12"
+    crearColumna.className = "col-md-auto col-xs-12"
     crearColumna.id = `columna-${viajantes.id}`
     crearColumna.innerHTML = `
         <div>
