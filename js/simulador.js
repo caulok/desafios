@@ -52,7 +52,7 @@ function agregarPersona(i) {
     let nacionalidad = prompt(`Ingrese la nacionalidad de la persona Nro ${i} (ARG, BRA, CHI)`)
     while(nacionalidad === "" || validarIsNotString(nacionalidad)){
         alert(`No has ingresado una nacionalidad`);
-        nacionalidad = prompt(`Por favor informanos la nacionalidad de la persona Nro ${i}`);
+        nacionalidad = prompt(`Por favor informanos las primeras 3 letras de la nacionalidad de la persona Nro ${i}`);
     }
     let persona = new Persona(contadorPersonas, mainName, lastName, nacionalidad, passport);
     return persona;
