@@ -23,9 +23,9 @@ class Paquete {
     }
 }
 class Persona {
-    constructor(id, name, apellido, nacionalidad, pasaporte) {
+    constructor(id, nombre, apellido, nacionalidad, pasaporte) {
         this.id = id;
-        this.nombre = name;
+        this.nombre = nombre;
         this.apellido = apellido;
         this.nacionalidad = nacionalidad;
         this.pasaporte = pasaporte;
@@ -33,30 +33,6 @@ class Persona {
 }
 
 /* FUNCIONES */
-function agregarPersona(i) {
-    let mainName = prompt(`Ingrese el nombre de la persona Nro ${i}`);
-    while(mainName === "" || validarIsNotString(mainName) || mainName.length < 2){
-        alert(`No has ingresado un nombre o es demasiado corto`);
-        mainName = prompt(`Por favor informanos el nombre de la persona Nro ${i}`);
-    }
-    let lastName = prompt(`Ingrese el apellido de la persona Nro ${i}`);
-    while(lastName === "" || validarIsNotString(lastName) || lastName.length < 2){
-        alert(`No has ingresado un apellido o es demasiado corto`);
-        lastName = prompt(`Por favor informanos el apellido de la persona Nro ${i}`);
-    }
-    let passport = parseInt(prompt(`Ingrese el pasaporte de la persona Nro ${i}`));
-    while(passport === "" || passport.toString().length < 6){
-        alert(`No has ingresado un pasaporte o colocaste un número menor a 6 dígitos`);
-        passport = prompt(`Por favor informanos el pasaporte de la persona Nro ${i}`);
-    }
-    let nacionalidad = prompt(`Ingrese la nacionalidad de la persona Nro ${i} (ARG, BRA, CHI)`)
-    while(nacionalidad === "" || validarIsNotString(nacionalidad)){
-        alert(`No has ingresado una nacionalidad`);
-        nacionalidad = prompt(`Por favor informanos las primeras 3 letras de la nacionalidad de la persona Nro ${i}`);
-    }
-    let persona = new Persona(contadorPersonas, mainName, lastName, nacionalidad, passport);
-    return persona;
-}
 
 /*Validar si es un string*/
 const validarIsNotString = (dato) => {
@@ -66,96 +42,107 @@ const validarIsNotString = (dato) => {
     }
     return true;
 }
+// let agregarPersonas = document.querySelector("#agregarPersonas");
+// function agregarFormulario(){
+// let crearColumna = document.createElement("div");
+//     crearColumna.className = "col-md-3";
+//     crearColumna.id = `formularioReserva`;
+//     crearColumna.innerHTML = `
+//     <h3>Agrega personas:</h3>
+//             <form class="form-floating mb-3" id="formulario">
+//               <div class="form-floating mb-3">
+//                 <input type="text" class="form-control" id="nombreInput" placeholder="Nombre">
+//                 <label for="nombre">Nombre</label>
+//               </div>
+//               <div class="form-floating mb-3">
+//                 <input type="text" class="form-control" id="apellidoInput" placeholder="Apellido">
+//                 <label for="apellido">Apellido</label>
+//               </div>
+//               <div class="form-floating mb-3">
+//                 <input type="text" class="form-control" id="pasaporteInput" placeholder="Pasaporte">
+//                 <label for="pasaporte">Pasaporte</label>
+//               </div>
+//               <div class="form-floating mb-3">
+//                 <input type="text" class="form-control" id="nacionalidadInput" placeholder="Nacionalidad">
+//                 <label for="nacionalidad">Nacionalidad</label>
+//               </div>
+//               <input class="btn btn-primary" type="submit" value="Agregar viajero">
+//             </form>
+//             <input class="btn btn-success mt-4" id="finalizarReserva" type="button" value="Finalizar reserva">
+//     `;
+//     agregarPersonas.append(crearColumna);
+// }
 
 /* VARIABLES GLOBALES */
+
 let personas = [];
 let paquetes = [];
 let reservas = [];
 let contadorDeReservas = 1;
 let contadorPersonas = 1;
 
-let paqueteMadrid = new Paquete(1, "Madrid", new Date("2024-11-24"), 7, "Hilton Hotel", 13000);
-let paqueteToledo = new Paquete(2, "Toledo", new Date("2024-3-14"), 10, "Nuestro Camino Hotel", 6000);
-let paqueteAranjuez = new Paquete(3, "Aranjuez", new Date("2024-05-12"), 10, "BlueStar Aparts", 7000);
-
-paquetes.push(paqueteMadrid);
-paquetes.push(paqueteToledo);
-paquetes.push(paqueteAranjuez);
-
-
-/* INGRESO DE LOS DATOS */
-    
-    /* Ingreso usuario */
-let usuario = prompt(`Hola, ¿podrías indicarnos cuál es tu nombre?`);
-while(usuario === "" || validarIsNotString(usuario) || usuario.length < 2){
-    alert(`No has ingresado tu nombre o es demasiado corto`);
-    usuario = prompt(`Por favor informanos tu nombre`);
-}
-    /* Elección de paquete */
-let elegirPaquete = parseInt(prompt(`Elegí por favor un paquete:\n\n1.Madrid\n2.Toledo\n3.Aranjuez`));
-while(elegirPaquete === "" || isNaN(elegirPaquete)){
-    alert(`No has ingresado un número`);
-    elegirPaquete = prompt(`Por favor selecciona un número de paquete:\n\n1.Madrid\n2.Toledo\n3.Aranjuez`);
-}
-let paqueteElegido = paquetes.find(paquete => paquete.id == elegirPaquete);
-
-    /* Elección de personas */
-let cantidad = parseInt(prompt(`¿Cuántas personas viajarán?`));
-while(cantidad === "" || isNaN(cantidad)){
-    alert(`No has ingresado una cantidad`);
-    cantidad = prompt(`Por favor selecciona una cantidad`);
-}
-for(let i = 1; i <= cantidad; i++) {
-    personas.push(agregarPersona(i));
-    contadorPersonas++;
-}
-
-    /* RESERVA */
-let reserva = new Reserva(contadorDeReservas, Date(), paqueteElegido, personas);
-contadorDeReservas++;
-reservas.push(reserva);
-
-    /* TOTAL */
-let total = paqueteElegido['precio']*cantidad
-
 /* DOM */
-let mostrarNombre = document.querySelector("#nombre");
-mostrarNombre.innerText = usuario.toUpperCase();
-let mostrarPaquete = document.querySelector("#paquete");
-mostrarPaquete.innerText = paqueteElegido['ubicacion'];
-let mostrarCantidad = document.querySelector("#cantidad");
-mostrarCantidad.innerText = cantidad;
-let mostrarFecha = document.querySelector("#fecha");
-mostrarFecha.innerText = `${paqueteElegido['fecha_contratada'].getDate()}/${paqueteElegido['fecha_contratada'].getMonth()+1}/${paqueteElegido['fecha_contratada'].getFullYear()}`;
-let mostrarHospedaje = document.querySelector("#hotel");
-mostrarHospedaje.innerText = paqueteElegido['hospedaje'];
-let mostrarTotal = document.querySelector("#total");
-mostrarTotal.innerText = `USD $${total}`;
-let mostrarGeneracion = document.querySelector("#generacion");
-mostrarGeneracion.innerText = `Generación del ticket de reserva: ${Date()}`;
 
-let contenedor = document.getElementById("contenedor");
 
-for (const viajantes of personas) {
-    let crearColumna = document.createElement("div");
-    crearColumna.className = "col-md-auto col-xs-12"
-    crearColumna.id = `columna-${viajantes.id}`
-    crearColumna.innerHTML = `
-        <div>
-            <h4>Datos de viajante ${viajantes.id}:</h4>
-            <br>
-            <h5>Viajero ${viajantes.id}:</h5>
-            <ul>
-                <li>Nombre: <strong>${viajantes.nombre.toUpperCase()} ${viajantes.apellido.toUpperCase()}</strong></li>
-                <li>Pasaporte: <strong>${viajantes.pasaporte}</strong></li>
-                <li>Nacionalidad: <strong>${viajantes.nacionalidad.toUpperCase()}</strong></li>
-            </ul>
-        </div>
-    `
-    contenedor.append(crearColumna);
+
+/* Paquetes */
+botonReservaUno = document.querySelector("#boton-reserva1");
+botonReservaDos = document.querySelector("#boton-reserva2");
+botonReservaTres = document.querySelector("#boton-reserva3");
+
+botonReservaUno.addEventListener('click', ()=> {
+    botonReservaUno.classList.remove("btn-primary");
+    botonReservaUno.classList.add("btn-secondary");
+    let paqueteMadrid = new Paquete(1, "Madrid", new Date("2024-11-24"), 7, "Hilton Hotel", 13000);
+    paquetes.push(paqueteMadrid);
+    // agregarFormulario();
+})
+
+botonReservaDos.addEventListener('click', ()=> {
+    botonReservaDos.classList.remove("btn-primary");
+    botonReservaDos.classList.add("btn-secondary");
+    let paqueteToledo = new Paquete(2, "Toledo", new Date("2024-3-14"), 10, "Nuestro Camino Hotel", 6000);
+    paquetes.push(paqueteToledo);
+    // agregarFormulario();
+})
+botonReservaTres.addEventListener('click', ()=> {
+    botonReservaTres.classList.remove("btn-primary");
+    botonReservaTres.classList.add("btn-secondary");
+    let paqueteAranjuez = new Paquete(3, "Aranjuez", new Date("2024-05-12"), 10, "BlueStar Aparts", 7000);
+    paquetes.push(paqueteAranjuez);
+    // agregarFormulario();
+})
+
+/* Formulario */
+let formulario = document.querySelector("#formulario");
+let nombreInput = document.querySelector("#nombreInput");
+let apellidoInput = document.querySelector("#apellidoInput");
+let pasaporteInput = document.querySelector("#pasaporteInput");
+let nacionalidadInput = document.querySelector("#nacionalidadInput");
+
+formulario.onsubmit = (event) => validarFormulario(event);
+function validarFormulario(event){
+    event.preventDefault();
+    id = contadorPersonas++;
+    nombre = nombreInput.value;
+    apellido = apellidoInput.value;
+    pasaporte = pasaporteInput.value;
+    nacionalidad = nacionalidadInput.value;
+    
+    let persona = new Persona(id, nombre, apellido, pasaporte, nacionalidad);
+    personas.push(persona);
+    alert(`¡Agregaste exitosamente a ${nombre}!`)
+    formulario.reset();
 }
 
-/*3ro la ejecución de funciones*/
-console.log(reserva);
-alert(`¡Gracias por reservar con nosotros!`)
+/* Reserva */
+let finalizarReserva = document.querySelector("#finalizarReserva");
+
+finalizarReserva.addEventListener('click', ()=> {
+    let reserva = new Reserva(contadorDeReservas, Date(), paquetes, personas);
+    contadorDeReservas++;
+    reservas.push(reserva);
+    alert(`¡Finalizaste la reserva! En la consola tenés el resumen`)
+    console.log(reservas);
+});
 

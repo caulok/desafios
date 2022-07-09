@@ -5,13 +5,16 @@
 }
 body{
     background: linear-gradient(132deg, rgba(9,9,121,0.5) 20%, rgba(0,212,255,0.5) 85%);
-    height: 100vh;
+}
+.row {
+    justify-content: space-evenly;
 }
 .container {
     background-color: rgba(248, 249, 250, 0.3);
-    display: flex;
+    /* display: flex; */
     padding: 30px;
     border-radius: 20px;
+    margin-bottom: 30px;
 }
 .col-md-auto{
     margin: 0 20px;
@@ -20,6 +23,8 @@ h2 {
     text-align: center;
     margin: 40px;
     font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 10px rgb(0 0 0 / 50%);
 }
 p {
     font-size: 10px;
@@ -27,5 +32,41 @@ p {
 }
 li {
     list-style: none;
+}
+img.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.card{
+    padding: 5px;
+}
+.card-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.card-text.precio {
+    margin: 15px 0;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+.card-text{
+    margin-bottom: 5px;
+    font-size: 1em;
+    font-style: normal;
+}
+h3 {
+    text-align: center;
+    margin: 1em 0;
+    color: white;
+    text-shadow: 1px 1px 10px rgb(0 0 0 / 50%);
+}
+input#finalizarReserva {
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10vh;
+}
+label{
+    color: rgba(0,0,0,0.5);
 }
 

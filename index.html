@@ -12,18 +12,65 @@
     <h2>RESERVA TU PAQUETE</h2>
     <div class="container" id="contenedor">
         <div class="row">
-            <div class="col-md-12 col-xs-12">
-                <h3>Resumen:</h3>
-                <ul>
-                    <li>Usuario: <strong id="nombre"></strong></li>
-                    <li>Paquete: <strong id="paquete"></strong></li>
-                    <li>Cantidad de personas: <strong id="cantidad"></strong></li>
-                    <li>Fecha: <strong id="fecha"></strong></li>
-                    <li>Hotel: <strong id="hotel"></strong></li>
-                </ul>
-                <h4>Precio: <strong id="total"></strong></h4>
-                <p id="generacion"></p>
+            <div class="card" style="width: 18rem;">
+                <img src="media/madrid.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title" id="titleCard1">Madrid</h5>
+                  <p class="card-text"><strong>Días:</strong> 7</p>
+                  <p class="card-text"><strong>Fecha:</strong> 24-11-2024</p>
+                  <p class="card-text"><strong>Hotel:</strong> Hilton Hotel</p>
+                  <p class="card-text precio">U$D 13000</p>
+                  <a href="#agregarPersonas" class="btn btn-primary"  id="boton-reserva1">Reserva</a>
+                </div>
+              </div>
+            <div class="card" style="width: 18rem;">
+                <img src="media/toledo.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Toledo</h5>
+                  <p class="card-text"><strong>Días:</strong> 10</p>
+                  <p class="card-text"><strong>Fecha:</strong> 14-03-2024</p>
+                  <p class="card-text"><strong>Hotel:</strong> Nuestro Camino Hotel</p>
+                  <p class="card-text precio">U$D 6000</p>
+                  <a href="#agregarPersonas" class="btn btn-primary" id="boton-reserva2">Reserva</a>
+                </div>
+              </div>
+            <div class="card" style="width: 18rem;">
+                <img src="media/aranjuez.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Aranjuez</h5>
+                  <p class="card-text"><strong>Días:</strong> 10</p>
+                  <p class="card-text"><strong>Fecha:</strong> 12-05-2024</p>
+                  <p class="card-text"><strong>Hotel:</strong> BlueStar Aparts</p>
+                  <p class="card-text precio">U$D 7000</p>
+                  <a href="#agregarPersonas" class="btn btn-primary" id="boton-reserva3">Reserva</a>
+                </div>
+              </div>
             </div>
+        </div>
+        <div class="row" id="agregarPersonas">
+          <div class="col-md-3" id="formularioReserva">
+            <h3>Agrega personas:</h3>
+            <form class="form-floating mb-3" id="formulario">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nombreInput" placeholder="Nombre">
+                <label for="nombre">Nombre</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="apellidoInput" placeholder="Apellido">
+                <label for="apellido">Apellido</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="pasaporteInput" placeholder="Pasaporte">
+                <label for="pasaporte">Pasaporte</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nacionalidadInput" placeholder="Nacionalidad">
+                <label for="nacionalidad">Nacionalidad</label>
+              </div>
+              <input class="btn btn-primary" type="submit" value="Agregar viajero">
+            </form>
+            <input class="btn btn-success mt-4" id="finalizarReserva" type="button" value="Finalizar reserva">
+          </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
