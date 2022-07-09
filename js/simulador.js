@@ -142,6 +142,12 @@ finalizarReserva.addEventListener('click', ()=> {
     let reserva = new Reserva(contadorDeReservas, Date(), paquetes, personas);
     contadorDeReservas++;
     reservas.push(reserva);
+    botonReservaUno.classList.remove("btn-secondary");
+    botonReservaUno.classList.add("btn-primary");
+    botonReservaDos.classList.remove("btn-secondary");
+    botonReservaDos.classList.add("btn-primary");
+    botonReservaTres.classList.remove("btn-secondary");
+    botonReservaTres.classList.add("btn-primary");
     alert(`¡Finalizaste la reserva! En la consola tenés el resumen`)
     console.log(reservas);
 });
