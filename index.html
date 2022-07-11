@@ -17,7 +17,7 @@
                 <div class="card-body">
                   <h5 class="card-title" id="titleCard1">Madrid</h5>
                   <p class="card-text"><strong>Días:</strong> 7</p>
-                  <p class="card-text"><strong>Fecha:</strong> 24-11-2024</p>
+                  <p class="card-text"><strong>Fecha:</strong> 24/11/2024</p>
                   <p class="card-text"><strong>Hotel:</strong> Hilton Hotel</p>
                   <p class="card-text precio">U$D 13000</p>
                   <a href="#agregarPersonas" class="btn btn-primary"  id="boton-reserva1">Reserva</a>
@@ -28,7 +28,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Toledo</h5>
                   <p class="card-text"><strong>Días:</strong> 10</p>
-                  <p class="card-text"><strong>Fecha:</strong> 14-03-2024</p>
+                  <p class="card-text"><strong>Fecha:</strong> 14/03/2024</p>
                   <p class="card-text"><strong>Hotel:</strong> Nuestro Camino Hotel</p>
                   <p class="card-text precio">U$D 6000</p>
                   <a href="#agregarPersonas" class="btn btn-primary" id="boton-reserva2">Reserva</a>
@@ -39,7 +39,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Aranjuez</h5>
                   <p class="card-text"><strong>Días:</strong> 10</p>
-                  <p class="card-text"><strong>Fecha:</strong> 12-05-2024</p>
+                  <p class="card-text"><strong>Fecha:</strong> 12/05/2024</p>
                   <p class="card-text"><strong>Hotel:</strong> BlueStar Aparts</p>
                   <p class="card-text precio">U$D 7000</p>
                   <a href="#agregarPersonas" class="btn btn-primary" id="boton-reserva3">Reserva</a>
@@ -52,19 +52,19 @@
             <h3>Agrega personas:</h3>
             <form class="form-floating mb-3" id="formulario">
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nombreInput" placeholder="Nombre">
+                <input type="text" class="form-control" id="nombreInput" placeholder="Nombre" minlength="2" required>
                 <label for="nombre">Nombre</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="apellidoInput" placeholder="Apellido">
+                <input type="text" class="form-control" id="apellidoInput" placeholder="Apellido" minlength="2" required>
                 <label for="apellido">Apellido</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="pasaporteInput" placeholder="Pasaporte">
+                <input type="text" class="form-control" id="pasaporteInput" placeholder="Pasaporte" minlength="6" required>
                 <label for="pasaporte">Pasaporte</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nacionalidadInput" placeholder="Nacionalidad">
+                <input type="text" class="form-control" id="nacionalidadInput" placeholder="Nacionalidad" minlength="2" required>
                 <label for="nacionalidad">Nacionalidad</label>
               </div>
               <input class="btn btn-primary" type="submit" value="Agregar viajero">

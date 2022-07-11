@@ -35,42 +35,12 @@ class Persona {
 /* FUNCIONES */
 
 /*Validar si es un string*/
-const validarIsNotString = (dato) => {
-    let datoParseado = parseInt(dato);
-    if(isNaN(datoParseado)) {
-        return false;
-    }
-    return true;
-}
-// let agregarPersonas = document.querySelector("#agregarPersonas");
-// function agregarFormulario(){
-// let crearColumna = document.createElement("div");
-//     crearColumna.className = "col-md-3";
-//     crearColumna.id = `formularioReserva`;
-//     crearColumna.innerHTML = `
-//     <h3>Agrega personas:</h3>
-//             <form class="form-floating mb-3" id="formulario">
-//               <div class="form-floating mb-3">
-//                 <input type="text" class="form-control" id="nombreInput" placeholder="Nombre">
-//                 <label for="nombre">Nombre</label>
-//               </div>
-//               <div class="form-floating mb-3">
-//                 <input type="text" class="form-control" id="apellidoInput" placeholder="Apellido">
-//                 <label for="apellido">Apellido</label>
-//               </div>
-//               <div class="form-floating mb-3">
-//                 <input type="text" class="form-control" id="pasaporteInput" placeholder="Pasaporte">
-//                 <label for="pasaporte">Pasaporte</label>
-//               </div>
-//               <div class="form-floating mb-3">
-//                 <input type="text" class="form-control" id="nacionalidadInput" placeholder="Nacionalidad">
-//                 <label for="nacionalidad">Nacionalidad</label>
-//               </div>
-//               <input class="btn btn-primary" type="submit" value="Agregar viajero">
-//             </form>
-//             <input class="btn btn-success mt-4" id="finalizarReserva" type="button" value="Finalizar reserva">
-//     `;
-//     agregarPersonas.append(crearColumna);
+// const validarIsNotString = (dato) => {
+//     let datoParseado = parseInt(dato);
+//     if(isNaN(datoParseado)) {
+//         return false;
+//     }
+//     return true;
 // }
 
 /* VARIABLES GLOBALES */
@@ -80,10 +50,6 @@ let paquetes = [];
 let reservas = [];
 let contadorDeReservas = 1;
 let contadorPersonas = 1;
-
-/* DOM */
-
-
 
 /* Paquetes */
 botonReservaUno = document.querySelector("#boton-reserva1");
@@ -95,7 +61,7 @@ botonReservaUno.addEventListener('click', ()=> {
     botonReservaUno.classList.add("btn-secondary");
     let paqueteMadrid = new Paquete(1, "Madrid", new Date("2024-11-24"), 7, "Hilton Hotel", 13000);
     paquetes.push(paqueteMadrid);
-    // agregarFormulario();
+    return paqueteMadrid;
 })
 
 botonReservaDos.addEventListener('click', ()=> {
@@ -103,14 +69,12 @@ botonReservaDos.addEventListener('click', ()=> {
     botonReservaDos.classList.add("btn-secondary");
     let paqueteToledo = new Paquete(2, "Toledo", new Date("2024-3-14"), 10, "Nuestro Camino Hotel", 6000);
     paquetes.push(paqueteToledo);
-    // agregarFormulario();
 })
 botonReservaTres.addEventListener('click', ()=> {
     botonReservaTres.classList.remove("btn-primary");
     botonReservaTres.classList.add("btn-secondary");
     let paqueteAranjuez = new Paquete(3, "Aranjuez", new Date("2024-05-12"), 10, "BlueStar Aparts", 7000);
     paquetes.push(paqueteAranjuez);
-    // agregarFormulario();
 })
 
 /* Formulario */
@@ -128,7 +92,7 @@ function validarFormulario(event){
     apellido = apellidoInput.value;
     pasaporte = pasaporteInput.value;
     nacionalidad = nacionalidadInput.value;
-    
+
     let persona = new Persona(id, nombre, apellido, pasaporte, nacionalidad);
     personas.push(persona);
     alert(`¡Agregaste exitosamente a ${nombre}!`)
@@ -151,4 +115,3 @@ finalizarReserva.addEventListener('click', ()=> {
     alert(`¡Finalizaste la reserva! En la consola tenés el resumen`)
     console.log(reservas);
 });
-
