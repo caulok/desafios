@@ -61,7 +61,6 @@ botonReservaUno.addEventListener('click', ()=> {
     botonReservaUno.classList.add("btn-secondary");
     let paqueteMadrid = new Paquete(1, "Madrid", new Date("2024-11-24"), 7, "Hilton Hotel", 13000);
     paquetes.push(paqueteMadrid);
-    return paqueteMadrid;
 })
 
 botonReservaDos.addEventListener('click', ()=> {
@@ -95,12 +94,18 @@ function validarFormulario(event){
 
     let persona = new Persona(id, nombre, apellido, pasaporte, nacionalidad);
     personas.push(persona);
-    alert(`¡Agregaste exitosamente a ${nombre}!`)
+    alert(`¡Agregaste exitosamente a ${nombre}!`);
     formulario.reset();
 }
 
 /* Reserva */
 let finalizarReserva = document.querySelector("#finalizarReserva");
+let resumenReserva = document.querySelector("#resumenReserva");
+
+// let paqueteSeleccionado = document.querySelector("#paqueteSeleccionado");
+// let hotelSeleccionado = document.querySelector("#hotelSeleccionado");
+// let viajero = document.querySelector("#viajero");
+// let precioTotal = document.querySelector("#precioTotal");
 
 finalizarReserva.addEventListener('click', ()=> {
     let reserva = new Reserva(contadorDeReservas, Date(), paquetes, personas);
@@ -112,6 +117,23 @@ finalizarReserva.addEventListener('click', ()=> {
     botonReservaDos.classList.add("btn-primary");
     botonReservaTres.classList.remove("btn-secondary");
     botonReservaTres.classList.add("btn-primary");
-    alert(`¡Finalizaste la reserva! En la consola tenés el resumen`)
+    
+    let contenedor = document.createElement("div");
+    contenedor.id = "resumen";
+    contenedor.innerHTML = `
+        <h4>Hotel: <strong>${reservas[0].paquete[0].hospedaje} (${reservas[0].paquete[0].ubicacion})</strong></h4>
+        <h4>Fecha: <strong>Del ${reservas[0].paquete[0].fecha_contratada.getDate()}/${reservas[0].paquete[0].fecha_contratada.getMonth()+1}/${reservas[0].paquete[0].fecha_contratada.getFullYear()} al ${reservas[0].paquete[0].fecha_contratada.getDate()+reservas[0].paquete[0].dias}/${reservas[0].paquete[0].fecha_contratada.getMonth()+1}/${reservas[0].paquete[0].fecha_contratada.getFullYear()}</strong></h4>
+        <br>
+        <h4><strong>Cantidad de personas: ${reservas[0].persona.length}</strong></h4>
+        <br>
+        <h4>Precio total: <strong>U$D ${(reservas[0].paquete[0].precio)*(reservas[0].persona.length)}</strong></h4>
+    </div>
+    `;
+    resumenReserva.appendChild(contenedor);
     console.log(reservas);
 });
+
+
+
+
+
