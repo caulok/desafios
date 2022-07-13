@@ -119,17 +119,30 @@ finalizarReserva.addEventListener('click', ()=> {
     botonReservaTres.classList.add("btn-primary");
     
     let contenedor = document.createElement("div");
+    contenedor.className = "col-md-auto";
     contenedor.id = "resumen";
     contenedor.innerHTML = `
         <h4>Hotel: <strong>${reservas[0].paquete[0].hospedaje} (${reservas[0].paquete[0].ubicacion})</strong></h4>
         <h4>Fecha: <strong>Del ${reservas[0].paquete[0].fecha_contratada.getDate()}/${reservas[0].paquete[0].fecha_contratada.getMonth()+1}/${reservas[0].paquete[0].fecha_contratada.getFullYear()} al ${reservas[0].paquete[0].fecha_contratada.getDate()+reservas[0].paquete[0].dias}/${reservas[0].paquete[0].fecha_contratada.getMonth()+1}/${reservas[0].paquete[0].fecha_contratada.getFullYear()}</strong></h4>
-        <br>
-        <h4><strong>Cantidad de personas: ${reservas[0].persona.length}</strong></h4>
+        <h4>Cantidad de personas: <strong>${reservas[0].persona.length}</strong></h4>
         <br>
         <h4>Precio total: <strong>U$D ${(reservas[0].paquete[0].precio)*(reservas[0].persona.length)}</strong></h4>
     </div>
     `;
     resumenReserva.appendChild(contenedor);
+
+    let contenedorResumenPersonas = document.createElement("div");
+    contenedorResumenPersonas.className = "col-md-auto";
+    contenedorResumenPersonas.id = "resumenPersonas";
+    contenedorResumenPersonas.innerHTML = `
+        <h4>Nombre completo: <strong>${reservas[0].persona[0].nombre.toUpperCase()} ${reservas[0].persona[0].apellido.toUpperCase()}</strong></h4>
+        <h4>Pasaporte: <strong>${reservas[0].persona[0].pasaporte}</strong></h4>
+        <h4>Nacionalidad: <strong>${reservas[0].persona[0].nacionalidad.toUpperCase()}</strong></h4>
+    </div>
+    `;
+    resumenReserva.appendChild(contenedor);
+    resumenReserva.appendChild(contenedorResumenPersonas);
+
     console.log(reservas);
 });
 
